@@ -7,4 +7,12 @@ class Admin_controller extends CI_Controller {
 	{
 		$this->load->view('admin/admin');
 	}
+	public function input()
+	{
+		$this->load->view('admin/input');
+	}
+	public function update()
+	{
+		$this->load->view('admin/update');
+	}
 }
