@@ -6,6 +6,7 @@ class Typelaundry_c extends CI_Controller {
 	public function __construct()
 	{
 		parent::__construct();
+		$this->load->helper('form');
 		$this->load->model('Typelaundry_m');
 	}
 	public function index()
@@ -15,10 +16,14 @@ class Typelaundry_c extends CI_Controller {
 	}
 	public function input()
 	{
-		$this->load->view('admin/input');
-	}
-	public function update()
-	{
-		$this->load->view('admin/update');
+		$this->load->library('form_validation');
+		$this->form_validation->set_rules('typelaundry_name','Name','required');
+		$this->form_validation->set_rules('typelaundry_costperkilo','Cost Per Kilo','required');
+		if($this->form_validation->run() == false)
+			$this->load->view('admin/typelaundry/add.php');
+		else{
+			$this->Typelaundry_m->insertData();
+			redirect('admin/Typelaundry_c');
+		}
 	}
 }

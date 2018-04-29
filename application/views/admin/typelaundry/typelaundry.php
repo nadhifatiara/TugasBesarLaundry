@@ -5,7 +5,7 @@
 <div class="container">
 <h1>List Type Laundry</h1>
 
-  <a href="<?php echo base_url('Admin_controller/input') ?>" class="btn btn-primary mb-3">Input</a>
+  <a href="<?php echo base_url('admin/Typelaundry_c/input') ?>" class="btn btn-primary mb-3">Input</a>
 <div class="table-responsive">
   <table id="example" class="table table-striped table-bordered dt-responsive nowrap" style="width:100%">
     <thead>

@@ -13,4 +13,12 @@ class Typelaundry_m extends CI_Model {
 		$query = $this->db->get("typelaundry");
 		return $query->result_array();
 	}
+	public function insertData()
+	{
+		$data = array(
+			'typelaundry_name' => $this->input->post('typelaundry_name'),
+			'typelaundry_costperkilo' => $this->input->post('typelaundry_costperkilo')
+		);
+		$this->db->insert('typelaundry',$data);
+	}
 }
