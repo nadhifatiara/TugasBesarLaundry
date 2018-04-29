@@ -5,30 +5,25 @@
 <div class="container-fluid mt-3">  
   <div class="row">
     <div class="col">
-      <form>
+      <?php echo validation_errors() ?>
+      <form method="post" action="<?php echo base_url("admin/Typelaundry_c/update/".$getData['typelaundry_id']) ?>">
   <div class="form-group row">
-    <label for="section_id" class="col-sm-2 col-form-label">ID</label>
+    <label for="typelaundry_name" class="col-sm-2 col-form-label">Name</label>
     <div class="col-sm-10">
-      <input type="text" name="section_id" class="form-control" id="section_id" value="">
+      <input type="text" name="typelaundry_name" class="form-control" id="typelaundry_name" value="<?php echo $getData['typelaundry_name'] ?>">
     </div>
   </div>
   <div class="form-group row">
-    <label for="section_name" class="col-sm-2 col-form-label">Name</label>
+    <label for="typelaundry_costperkilo" class="col-sm-2 col-form-label">Cost Per Kilo</label>
     <div class="col-sm-10">
-      <input type="text" name="section_name" class="form-control" id="section_name" value="">
-    </div>
-  </div>
-  <div class="form-group row">
-    <label for="section_salary" class="col-sm-2 col-form-label">Salary</label>
-    <div class="col-sm-10">
-      <input type="text" name="section_salary" class="form-control" id="section_salary" value="">
+      <input type="number" name="typelaundry_costperkilo" class="form-control" id="typelaundry_costperkilo" value="<?php echo $getData['typelaundry_costperkilo'] ?>" min="0">
     </div>
   </div>
   
   <div class="form-group row">
     <label for="" class="col-sm-2 col-form-label"></label>
     <div class="col-sm-10">
-      <input type="submit" name="" class="btn btn-primary" id="" value="Input">
+      <input type="submit" name="" class="btn btn-success" id="" value="Update">
     </div>
   </div>
 </form>

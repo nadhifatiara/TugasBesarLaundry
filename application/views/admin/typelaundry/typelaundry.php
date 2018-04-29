@@ -21,8 +21,8 @@
         <td><?php echo $value['typelaundry_name'] ?></td>
         <td><?php echo $value['typelaundry_costperkilo'] ?></td>
         <td>
-          <a href="<?php echo base_url('Admin_controller/update') ?>" class="btn btn-sm btn-success">Update</a>
-          <a href="" class="btn btn-sm btn-danger">Delete</a>
+          <a href="<?php echo base_url('admin/Typelaundry_c/update/'.$value['typelaundry_id']) ?>" class="btn btn-sm btn-success">Update</a>
+          <a href="<?php echo base_url('admin/Typelaundry_c/delete/'.$value['typelaundry_id']) ?>" class="btn btn-sm btn-danger">Delete</a>
         </td>
       </tr>
       <?php endforeach ?>
