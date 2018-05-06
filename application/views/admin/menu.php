@@ -17,15 +17,21 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#">
+                <a class="nav-link" href="<?php echo base_url('Employee') ?>">
                   <span data-feather="shopping-cart"></span>
                   Employee
                 </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#">
+                <a class="nav-link" href="<?php echo base_url('Section') ?>">
                   <span data-feather="users"></span>
                   Section
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="<?php echo base_url('Perfume') ?>">
+                  <span data-feather="users"></span>
+                  Perfume
                 </a>
               </li>
               <li class="nav-item">
