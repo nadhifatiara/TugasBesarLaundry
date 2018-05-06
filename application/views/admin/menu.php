@@ -5,13 +5,13 @@
           <div class="sidebar-sticky">
             <ul class="nav flex-column">
               <li class="nav-item">
-                <a class="nav-link" href="#">
+                <a class="nav-link" href="<?php echo base_url('Admin_controller') ?>">
                   <span data-feather="home"></span>
                   Dashboard 
                 </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#">
+                <a class="nav-link" href="<?php echo base_url('Customer') ?>">
                   <span data-feather="file"></span>
                   Customers
                 </a>
