@@ -22,4 +22,28 @@ class Home extends CI_Controller {
 	{
 		$this->load->view('home/home');
 	}
+	public function perfume()
+	{
+		$this->load->model('Perfume_m');
+
+		$limit_per_page=3;
+		$start_index = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
+		$total_records= $this->Perfume_m->get_total();
+
+		if($total_records > 0 ){
+			$data['perfume'] = $this->Perfume_m->get_all_artikel($limit_per_page,$start_index);
+			$config['base_url'] = base_url().'index.php/Home/perfume';
+			$config['total_rows'] = $total_records;
+			$config['per_page'] = $limit_per_page;
+			$config['uri_segment'] = 3;
+
+			$this->pagination->initialize($config);
+
+			$data['links'] = $this->pagination->create_links();
+		}
+
+		
+		$this->load->view('home/perfume',$data);
+	}
+
 }
