@@ -105,6 +105,7 @@
         </a>
         <a class="py-2 d-none d-md-inline-block" href="#">Home</a>
         <a class="py-2 d-none d-md-inline-block" href="#">Category</a>
+        <a class="py-2 d-none d-md-inline-block" href="<?php echo base_url('Home/Perfume') ?>">Perfume</a>
         <a class="py-2 d-none d-md-inline-block" href="#">Order</a>
         <a class="py-2 d-none d-md-inline-block" href="#">About Us</a>
         <ul class="navbar-nav px-3">
