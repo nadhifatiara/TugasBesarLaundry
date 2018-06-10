@@ -12,7 +12,7 @@
 				<!-- Sesuaikan Column Table -->
 				<th>#</th>
 				<th>Name</th>
-				<th>Price</th>
+				<th>Salary</th>
 				<th>Aksi</th>
 			</tr>
 		</thead>

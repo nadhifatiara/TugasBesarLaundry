@@ -20,13 +20,16 @@ class Home extends CI_Controller {
 	 */
 	public function index()
 	{
+		$this->load->view('home/header');
+		$this->load->view('home/navbar');
 		$this->load->view('home/home');
+		$this->load->view('home/footer');
 	}
 	public function perfume()
 	{
 		$this->load->model('Perfume_m');
 
-		$limit_per_page=3;
+		$limit_per_page=6;
 		$start_index = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
 		$total_records= $this->Perfume_m->get_total();
 
@@ -42,8 +45,10 @@ class Home extends CI_Controller {
 			$data['links'] = $this->pagination->create_links();
 		}
 
-		
+		$this->load->view('home/header');
+		$this->load->view('home/navbar');
 		$this->load->view('home/perfume',$data);
+		$this->load->view('home/footer');
 	}
 
 }

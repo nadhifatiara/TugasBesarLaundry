@@ -2,6 +2,9 @@
 <?php $this->load->view('admin/navbar') ?>
 <?php $this->load->view('admin/menu') ?>
 <main role="main" class="container">
+	<?php if($this->session->flashdata('user_loggedin')): ?>
+         <?php echo '<p class="alert alert-success">'.$this->session->flashdata('user_loggedin').'</p>'; ?>
+       <?php endif; ?>
 	<h1>Customer</h1>
 	<a href="<?php echo base_url('customer/tambah') ?>" class="btn btn-primary mb-3">Tambah</a>
 

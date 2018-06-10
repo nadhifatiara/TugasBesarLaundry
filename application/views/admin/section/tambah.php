@@ -12,14 +12,14 @@
 	 -->
 	<form action="<?php echo base_url('section/tambah'); ?>" method="post">
 		<div class="form-group row">
-			<label for="section_name" class="col-sm-2 col-form-label">section_name</label>
+			<label for="section_name" class="col-sm-2 col-form-label">Name</label>
 			<div class="col-sm-10">
 				<input type="text" name="section_name" class="form-control" id="section_name" value="" placeholder="section_name">
 				<?php echo form_error('section_name') ?> <!-- menampilkan error saat rule section_name gagal -->
 			</div>
 		</div>
 		<div class="form-group row">
-			<label for="section_salary" class="col-sm-2 col-form-label">section_salary</label>
+			<label for="section_salary" class="col-sm-2 col-form-label">Salary</label>
 			<div class="col-sm-10">
 				<input type="text" name="section_salary" class="form-control" id="section_salary" value="" placeholder="section_salary">
 				<?php echo form_error('section_salary') ?> <!-- menampilkan error saat rule section_salary gagal -->
