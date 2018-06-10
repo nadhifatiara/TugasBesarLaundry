@@ -50,5 +50,27 @@ class Home extends CI_Controller {
 		$this->load->view('home/perfume',$data);
 		$this->load->view('home/footer');
 	}
-
+	public function list_order()
+	{
+		if (!$this->session->userdata('logged_in')) {
+			echo '<script>alert("Harus Login Dolo")</script>';
+			redirect('Login/login','refresh');
+		}
+		$this->load->model('Order_m');
+		$data['list_order'] = $this->Order_m->getDataCustomer($this->session->userdata('id'));
+		$this->load->view('home/header');
+		$this->load->view('home/navbar');
+		$this->load->view('home/list_order',$data);
+		$this->load->view('home/footer');
+	}
+	public function order()
+	{
+		if (!$this->session->userdata('logged_in')) {
+			echo '<script>alert("Harus Login Dolo")</script>';
+			redirect('Login/login','refresh');
+		}
+		$this->load->model('Order_m');
+		$this->Order_m->order_call();
+		redirect('Home/list_order','refresh');
+	}
 }

@@ -1,4 +1,16 @@
     <div class="position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center bg-light">
+      <div class="col-md-5 mx-auto">
+        <?php echo form_open('home/order'); ?>
+        <h3 class="text-center">Order</h3>
+        <div class="form-group">
+          <label for="">Address</label>
+          <input type="text" name="order_address" class="form-control" required="">
+        </div>
+        <label for="">Harga</label>
+        <input type="text" readonly="" name="order_cost" class="form-control text-center" value="5000">
+        <button type="submit" class="btn btn-primary">Order</button>
+        <?php echo form_close(); ?>
+      </div>
       <div class="col-md-5 p-lg-5 mx-auto my-5">
         <h1 class="display-4 font-weight-normal">Laundry Online</h1>
         <p class="lead font-weight-normal">We will help you to do laundry easier.</p>
