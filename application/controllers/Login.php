@@ -26,7 +26,8 @@ class Login extends CI_Controller {
 					'id' => $result->id,
 					'username' => $username,
 					'level' => $result->fk_id_level,
-					'logged_in' => true
+					'logged_in' => true,
+					'fk_customers_id' => $result->fk_customer_id,
 				);
 				$this->session->set_userdata($user_data);
 
@@ -42,7 +43,7 @@ class Login extends CI_Controller {
         // Set message
 				$this->session->set_flashdata('login_failed', 'Login is invalid');
 
-				redirect('user/login');
+				redirect('Login/login');
 			}       
 		}
 	}

@@ -22,7 +22,9 @@ class Home extends CI_Controller {
 	{
 		$this->load->view('home/header');
 		$this->load->view('home/navbar');
-		$this->load->view('home/home');
+		$this->load->model('Typelaundry_m');
+		$data['typelaundry'] = $this->Typelaundry_m->getData(); 
+		$this->load->view('home/home',$data);
 		$this->load->view('home/footer');
 	}
 	public function perfume()
@@ -57,7 +59,7 @@ class Home extends CI_Controller {
 			redirect('Login/login','refresh');
 		}
 		$this->load->model('Order_m');
-		$data['list_order'] = $this->Order_m->getDataCustomer($this->session->userdata('id'));
+		$data['list_order'] = $this->Order_m->getDataCustomer();
 		$this->load->view('home/header');
 		$this->load->view('home/navbar');
 		$this->load->view('home/list_order',$data);

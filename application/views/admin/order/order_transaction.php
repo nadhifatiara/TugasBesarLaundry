@@ -15,6 +15,14 @@
 		</select>
 	</div>
 	<div class="form-group">
+		<label for="">Perfume</label>
+		<select name="fk_typelaundry_id" id="" class="form-control">	
+		<?php foreach ($perfume as $key => $value): ?>
+			<option value="<?php echo $value['perfume_id'] ?>"><?php echo $value['perfume_name'] ?></option>
+		<?php endforeach ?>
+		</select>
+	</div>
+	<div class="form-group">
 		<label for="">Kilo</label>
 		<input type="number" min="1" value="1" name="order_kilo" class="form-control">
 	</div>

@@ -5,7 +5,7 @@ class Order_m extends CI_Model {
 
 	public function getDataCustomer()
 	{
-		$id_customer = $this->session->userdata('id');
+		$id_customer = $this->session->userdata('fk_customers_id');
 		return $this->db->where('fk_customers_id',$id_customer)->where('order_status !=',6)->order_by('order_date','desc')->get('order')->result_array();
 	}
 	public function getDataStatus($status)
@@ -16,9 +16,13 @@ class Order_m extends CI_Model {
 	{
 		return $this->db->get('typelaundry')->result_array();
 	}
+	public function get_perfume()
+	{
+		return $this->db->get('perfume')->result_array();
+	}
 	public function order_call()
 	{
-		$id_customer = $this->session->userdata('id');
+		$id_customer = $this->session->userdata('fk_customers_id');
 		$data = array(
 			'order_date'=>date('Y-m-d'),
 			'order_address'=>$this->input->post('order_address'),

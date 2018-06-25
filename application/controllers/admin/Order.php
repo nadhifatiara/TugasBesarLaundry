@@ -25,6 +25,7 @@ class Order extends CI_Controller {
 		$this->form_validation->set_rules('order_kilo','Kilo','required');
 		if ($this->form_validation->run() == false) {
 			$data['typelaundry'] = $this->Order_m->get_typelaundry();
+			$data['perfume'] = $this->Order_m->get_perfume();
 			$this->load->view('admin/order/order_transaction',$data);
 		}else{
 			$this->Order_m->order_transaction($id);
@@ -63,6 +64,6 @@ class Order extends CI_Controller {
 	}
 	public function taked($id)
 	{
-		echo "berhasil id = ".$id;
+		echo "berhasil mengambil, id = ".$id;
 	}
 }

@@ -41,9 +41,27 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#">
+                <a class="nav-link" href="<?php echo base_url('admin/Order/finding') ?>">
                   <span data-feather="layers"></span>
-                  Order
+                  Order Finding
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="<?php echo base_url('admin/Order/list_transaction') ?>">
+                  <span data-feather="layers"></span>
+                  Order List Transaction
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="<?php echo base_url('admin/Order/list_wash') ?>">
+                  <span data-feather="layers"></span>
+                  Order Wash
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="<?php echo base_url('admin/Order/list_clear') ?>">
+                  <span data-feather="layers"></span>
+                  Order Clear
                 </a>
               </li>
               <li class="nav-item">

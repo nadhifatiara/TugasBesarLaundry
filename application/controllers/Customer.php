@@ -8,12 +8,12 @@ class Customer extends CI_Controller {
 		parent::__construct();
 		//load model Customer_m
 		$this->load->model('Customer_m');
-		//load helper form
+		//load helper form 
 		$this->load->helper('form');	
 	}
 
 	/* index (fungsi yang akan berjalan jika tidak ada fungsi yang dipangggil)
-	jika url = ".[]/customer" maka fungsi index yang dijalankan */
+	jika url = ".[]/customer" maka fungsi index yang dijalankan */ 
 	public function index()
 	{
 		/* mengisi $data['getData'] berupa data yang 
@@ -33,8 +33,8 @@ class Customer extends CI_Controller {
 		- parameter 2 ('ID') = untuk tampilan error
 		- parameter 3 ('required') = rule nya (ada banyak rule buka di userguide)
 		*/
-		$this->form_validation->set_rules('customer_firstname','First Name','required');
-		$this->form_validation->set_rules('customer_lastname','Last Name','required');
+		$this->form_validation->set_rules('customer_firstname','First Name','required|alpha');
+		$this->form_validation->set_rules('customer_lastname','Last Name','required|alpha');
 		$this->form_validation->set_rules('customer_address','Address','required');
 		$this->form_validation->set_rules('customer_telp','Telp','required');
 		$this->form_validation->set_rules('customer_email','Email','required');
