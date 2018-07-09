@@ -244,7 +244,23 @@ p {
 
   <div class="grid">
 <?php echo validation_errors(); ?>
-    <?php echo form_open('Login/login',array('class'=>'form login')) ?>
+    <?php echo form_open('Login/register',array('class'=>'form login')) ?>
+    <div class="form__field">
+        <label for="login__username"><svg class="icon"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#user"></use></svg><span class="hidden">Username</span></label>
+        <input id="login__username" type="text" name="customer_firstname" class="form__input" placeholder="First Name">
+      </div>
+      <div class="form__field">
+        <label for="login__username"><svg class="icon"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#user"></use></svg><span class="hidden">Username</span></label>
+        <input id="login__username" type="text" name="customer_lastname" class="form__input" placeholder="Last Name">
+      </div>
+      <div class="form__field">
+        <label for="login__username"><svg class="icon"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#user"></use></svg><span class="hidden">Username</span></label>
+        <input id="login__username" type="text" name="customer_address" class="form__input" placeholder="Address">
+      </div>
+      <div class="form__field">
+        <label for="login__username"><svg class="icon"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#user"></use></svg><span class="hidden">Username</span></label>
+        <input id="login__username" type="text" name="customer_telp" class="form__input" placeholder="Telp">
+      </div>
  <div class="form__field">
         <label for="login__username"><svg class="icon"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#user"></use></svg><span class="hidden">Username</span></label>
         <input id="login__username" type="text" name="username" class="form__input" placeholder="Username">
@@ -261,7 +277,7 @@ p {
       <?php echo form_close(); ?>
     
 
-    <p class="text--center">Not a member? <a href="<?php echo base_url('Login/register') ?>">Sign up now</a> <svg class="icon"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="assets/images/icons.svg#arrow-right"></use></svg></p>
+    <p class="text--center">Not a member? <a href="#">Sign up now</a> <svg class="icon"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="assets/images/icons.svg#arrow-right"></use></svg></p>
 
   </div>
 

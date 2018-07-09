@@ -59,4 +59,32 @@ class Login extends CI_Controller {
         redirect('Login/login');
     }
 
+    public function register()
+    {
+    	$this->form_validation->set_rules('username', 'Username', 'required');
+		$this->form_validation->set_rules('password', 'Password', 'required');
+
+		if($this->form_validation->run() === FALSE){
+			$this->load->view('register');
+		} else {
+			$set_customer = array(
+				'customer_firstname' => $this->input->post('customer_firstname'),
+				'customer_lastname' => $this->input->post('customer_lastname'),
+				'customer_address' => $this->input->post('customer_address'),
+				'customer_telp' => $this->input->post('customer_telp'),
+			);
+			$this->db->insert('customer',$set_customer);
+			$id = $this->db->insert_id();
+			$set_users = array(
+				'username' => $this->input->post('username'),
+				'password' => md5($this->input->post('password')),
+				'fk_id_level' => 2,
+				'fk_employee_id' => null,
+				'fk_customer_id' => $id
+			);
+			$this->db->insert('users',$set_users);
+			redirect('Login/login','refresh');       
+		}
+    }
+
 }
