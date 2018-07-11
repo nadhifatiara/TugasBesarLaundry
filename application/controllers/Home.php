@@ -75,4 +75,12 @@ class Home extends CI_Controller {
 		$this->Order_m->order_call();
 		redirect('Home/list_order','refresh');
 	}
+
+	public function about()
+	{
+		$this->load->view('home/header');
+		$this->load->view('home/navbar');
+		$this->load->view('home/about');
+		$this->load->view('home/footer');
+	}
 }

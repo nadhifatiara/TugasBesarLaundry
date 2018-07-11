@@ -26,7 +26,7 @@
         <?php endforeach ?>
 
       </div>
-      <div class="col-md-5 mx-auto">
+      <div class="col-md-5 mx-auto mb-5">
         <?php echo form_open('home/order'); ?>
         <h3 class="text-center">Order</h3>
         <div class="form-group">
@@ -35,7 +35,7 @@
         </div>
         <label for="">Harga</label>
         <input type="text" readonly="" name="order_cost" class="form-control text-center" value="5000">
-        <button type="submit" class="btn btn-primary mt-2 btn-block">Order</button>
+        <button type="submit" class="btn btn-primary mt-2 btn-block mb-5">Order</button>
         <?php echo form_close(); ?>
       </div>
     </div>
