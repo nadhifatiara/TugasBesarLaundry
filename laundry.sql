@@ -1,13 +1,15 @@
 -- phpMyAdmin SQL Dump
--- version 4.5.1
--- http://www.phpmyadmin.net
+-- version 4.7.4
+-- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: 19 Jul 2018 pada 15.43
--- Versi Server: 10.1.8-MariaDB
--- PHP Version: 5.6.14
+-- Generation Time: Jul 19, 2018 at 04:27 PM
+-- Server version: 10.1.29-MariaDB
+-- PHP Version: 7.2.0
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
+START TRANSACTION;
 SET time_zone = "+00:00";
 
 
@@ -23,7 +25,7 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `level`
+-- Table structure for table `level`
 --
 
 CREATE TABLE `level` (
@@ -32,17 +34,18 @@ CREATE TABLE `level` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data untuk tabel `level`
+-- Dumping data for table `level`
 --
 
 INSERT INTO `level` (`id`, `name`) VALUES
 (1, 'admin'),
-(2, 'user');
+(2, 'user'),
+(3, 'courier');
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `perfume`
+-- Table structure for table `perfume`
 --
 
 CREATE TABLE `perfume` (
@@ -52,7 +55,7 @@ CREATE TABLE `perfume` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data untuk tabel `perfume`
+-- Dumping data for table `perfume`
 --
 
 INSERT INTO `perfume` (`perfume_id`, `perfume_name`, `perfume_costperkilo`) VALUES
@@ -61,7 +64,7 @@ INSERT INTO `perfume` (`perfume_id`, `perfume_name`, `perfume_costperkilo`) VALU
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `transaksi`
+-- Table structure for table `transaksi`
 --
 
 CREATE TABLE `transaksi` (
@@ -77,21 +80,22 @@ CREATE TABLE `transaksi` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data untuk tabel `transaksi`
+-- Dumping data for table `transaksi`
 --
 
 INSERT INTO `transaksi` (`id`, `date`, `fk_users_customer`, `address`, `fk_perfume`, `fk_typelaundry`, `fk_users_courier`, `weight_item`, `status`) VALUES
 (2, '2018-07-19 19:16:20', 5, '1', 1, 1, NULL, NULL, 1),
-(3, '2018-07-19 19:19:03', 5, '1', 1, 1, 4, 1, 5),
+(3, '2018-07-19 19:19:03', 5, '1', 1, 1, 4, 1, 8),
 (4, '2018-07-19 19:19:10', 5, '1', 1, 1, 4, NULL, 2),
 (5, '2018-07-19 20:24:35', 5, '1', 1, 1, NULL, NULL, 1),
 (6, '2018-07-19 20:26:26', 5, '11', 1, 1, NULL, NULL, 1),
-(7, '2018-07-19 20:26:40', 5, '1', 1, 1, NULL, NULL, 1);
+(7, '2018-07-19 20:26:40', 5, '1', 1, 1, NULL, NULL, 1),
+(8, '2018-07-19 21:22:40', 5, 'Malang', 1, 1, 8, 10, 8);
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `typelaundry`
+-- Table structure for table `typelaundry`
 --
 
 CREATE TABLE `typelaundry` (
@@ -101,7 +105,7 @@ CREATE TABLE `typelaundry` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data untuk tabel `typelaundry`
+-- Dumping data for table `typelaundry`
 --
 
 INSERT INTO `typelaundry` (`typelaundry_id`, `typelaundry_name`, `typelaundry_costperkilo`) VALUES
@@ -110,7 +114,7 @@ INSERT INTO `typelaundry` (`typelaundry_id`, `typelaundry_name`, `typelaundry_co
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `users`
+-- Table structure for table `users`
 --
 
 CREATE TABLE `users` (
@@ -126,14 +130,16 @@ CREATE TABLE `users` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data untuk tabel `users`
+-- Dumping data for table `users`
 --
 
 INSERT INTO `users` (`id`, `firstname`, `lastname`, `address`, `telp`, `username`, `password`, `image`, `fk_id_level`) VALUES
 (4, 'a', 'a', '1', '1', '2', 'c81e728d9d4c2f636f067f89cc14862c', '1.PNG', 1),
 (5, '1', '1', '1', '1', '1', 'c4ca4238a0b923820dcc509a6f75849b', '11.PNG', 2),
 (6, 'asdasdasd', 'asdasdasd', 'asdasdasdasd', 'asdasdasdas', 'tholibsaddasd', '1b2f8c4f06f54d70403b77b0fa41df2c', '12.PNG', 2),
-(7, 'asdasd', 'asdasd', 'asdasd', 'asdadasdasd', 'tholib111', '1bbd886460827015e5d605ed44252251', '13.PNG', 2);
+(7, 'asdasd', 'asdasd', 'asdasd', 'asdadasdasd', 'tholib111', '1bbd886460827015e5d605ed44252251', '13.PNG', 2),
+(8, 'asd', 'asd', '3', '3', '3', 'eccbc87e4b5ce2fe28308fd9f2a7baf3', 'gear.png', 3),
+(9, 'a', 'a', '4', '4', '4', 'a87ff679a2f3e71d9181a67b7542122c', 'gear1.png', 3);
 
 --
 -- Indexes for dumped tables
@@ -182,33 +188,38 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `level`
 --
 ALTER TABLE `level`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
 --
 -- AUTO_INCREMENT for table `perfume`
 --
 ALTER TABLE `perfume`
   MODIFY `perfume_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
 --
 -- AUTO_INCREMENT for table `transaksi`
 --
 ALTER TABLE `transaksi`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+
 --
 -- AUTO_INCREMENT for table `typelaundry`
 --
 ALTER TABLE `typelaundry`
   MODIFY `typelaundry_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+
 --
--- Ketidakleluasaan untuk tabel pelimpahan (Dumped Tables)
+-- Constraints for dumped tables
 --
 
 --
--- Ketidakleluasaan untuk tabel `transaksi`
+-- Constraints for table `transaksi`
 --
 ALTER TABLE `transaksi`
   ADD CONSTRAINT `transaksi_ibfk_1` FOREIGN KEY (`fk_perfume`) REFERENCES `perfume` (`perfume_id`) ON DELETE CASCADE ON UPDATE CASCADE,
@@ -217,10 +228,11 @@ ALTER TABLE `transaksi`
   ADD CONSTRAINT `transaksi_ibfk_4` FOREIGN KEY (`fk_typelaundry`) REFERENCES `typelaundry` (`typelaundry_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Ketidakleluasaan untuk tabel `users`
+-- Constraints for table `users`
 --
 ALTER TABLE `users`
   ADD CONSTRAINT `users_ibfk_1` FOREIGN KEY (`fk_id_level`) REFERENCES `level` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

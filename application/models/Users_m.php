@@ -40,11 +40,12 @@ class Users_m extends CI_Model {
 			'address' => $this->input->post('address'),
 			'telp' => $this->input->post('telp'),
 			'email' => $this->input->post('email'),
-			'password' => $this->input->post('password')
+			'password' => md5($this->input->post('password'))
 		);
 		/* jika semua sama sperti di table
 		gunakan versi simple seprti berikut */
 		$data = $this->input->post();
+		$data['password'] = md5($data['password']);
 		$data['image'] = $upload_name;
 		/* eksekusi query insert into "users" diisi dengan variable $data
 		face2face ae lek bingung :| */
@@ -64,12 +65,12 @@ class Users_m extends CI_Model {
 			'address' => $this->input->post('address'),
 			'telp' => $this->input->post('telp'),
 			'email' => $this->input->post('email'),
-			'password' => $this->input->post('password')
+			'password' => md5($this->input->post('password'))
 		);
 		/* jika semua sama sperti di table
 		gunakan versi simple seprti berikut */
 		$data = $this->input->post();
-
+		$data['password'] = md5($data['password']);
 		//jika image kosong maka tidak mengubah image
 		if($upload_name!=null)
 			$data['image'] = $upload_name;

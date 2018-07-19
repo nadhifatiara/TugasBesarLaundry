@@ -80,6 +80,13 @@ class Home extends CI_Controller {
 		$this->load->view('home/footer');
 	}
 	
+	public function kirim_barang($id)
+	{
+		$set['status'] = 6;
+		$this->db->where('id',$id);
+		$this->db->update('transaksi',$set);
+		redirect('Home/list_order','refresh');
+	}
 
 	public function about()
 	{

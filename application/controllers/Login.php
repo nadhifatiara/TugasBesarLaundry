@@ -34,7 +34,7 @@ class Login extends CI_Controller {
         // Set message
 				$this->session->set_flashdata('user_loggedin', 'You are now logged in');
 
-				if ($user_data['level'] == '1') {
+				if ($user_data['level'] != '2' ) {
 					redirect('Users');
 				}else{
 					redirect('Home','refresh');

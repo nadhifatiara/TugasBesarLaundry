@@ -54,7 +54,6 @@
 	<div class="form-group row">
 	<label for="fk_id_level" class="col-sm-2 col-form-label">fk_id_level</label>
 	<div class="col-sm-10">
-		<?php echo var_dump($level) ?>
 		<select name="fk_id_level" class="form-control">
 			<?php foreach ($level as $key => $value): ?>
 				<option value="<?php echo $value->id ?>"><?php echo $value->name ?></option>

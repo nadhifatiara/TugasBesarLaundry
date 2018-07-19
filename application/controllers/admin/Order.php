@@ -28,7 +28,7 @@ class Order extends CI_Controller {
 			$this->load->view('admin/order/order_transaction',$data);
 		}else{
 			$this->Order_m->order_transaction($id);
-			redirect('Admin/Order/list_transaction','refresh');
+			redirect('Admin/Order/finding','refresh');
 		}
 	}
 	public function list_transaction()
@@ -60,6 +60,24 @@ class Order extends CI_Controller {
 	{
 		$this->Order_m->order_take($id);
 		redirect('Admin/Order/taked/'.$id,'refresh');
+	}
+	public function deliver()
+	{
+		$data['list_order'] = $this->Order_m->getDataStatus(6);
+		$this->load->view('admin/order/order_list_deliver',$data);
+	}
+	public function delivered($id)
+	{
+		$set['status'] = 7;
+		$this->db->where('id',$id);
+		$this->db->update('transaksi',$set);
+		$data['id'] = $id;
+		$this->load->view('admin/order/order_deliver',$data);
+	}
+	public function del($id)
+	{
+		$this->Order_m->order_deliver($id);
+		redirect('admin/Order/deliver','refresh');
 	}
 	public function laporan()
 	{

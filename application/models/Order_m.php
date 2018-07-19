@@ -97,6 +97,12 @@ class Order_m extends CI_Model {
 		$this->db->where('id',$id);
 		$this->db->update('transaksi',$set);
 	}
+	public function order_deliver($id)
+	{
+		$set['status'] = 8;
+		$this->db->where('id',$id);
+		$this->db->update('transaksi',$set);
+	}
 }
 
 /* order status

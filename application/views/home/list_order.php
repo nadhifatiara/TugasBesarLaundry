@@ -45,10 +45,16 @@
                         $var = 'Process';
                         break;
                         case 5:
-                        $var = 'Kirim Barang';
+                        $var = '<a href="'.base_url("Home/kirim_barang/".$value['id']).'" class="btn btn-sm btn-primary">Kirim</a>';
                         break;
                         case 6:
-                        $var = 'Taked';
+                        $var = 'Wait Our Courier to Respond';
+                        break;
+                        case 7:
+                        $var = 'Courier on the way';
+                        break;
+                        case 8:
+                        $var = 'Barang Telah Di ambil';
                         break;
                       
                       default:
