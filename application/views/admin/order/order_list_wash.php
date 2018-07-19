@@ -12,7 +12,11 @@
 				<th>#</th>
 				<th>Date</th>
 				<th>Address</th>
-				<th>Kilo</th>
+				<th>Perfume</th>
+				<th>Typelaundry</th>
+				<th>Customers Name</th>
+				<th>Weight</th>
+				<th>Total</th>
 				<th>Aksi</th>
 			</tr>
 		</thead>
@@ -21,11 +25,15 @@
 				<tr>
 					<!-- Sesuaikan Column Table -->
 					<td><?php echo ++$key ?></td>
-					<td><?php echo $value['order_date'] ?></td>
-					<td><?php echo $value['order_address'] ?></td>
-					<td><?php echo $value['order_kilo'] ?></td>
+					<td><?php echo $value['date'] ?></td>
+					<td><?php echo $value['address'] ?></td>
+					<td><?php echo $value['perfume'] ?></td>
+					<td><?php echo $value['typelaundry'] ?></td>
+					<td><?php echo $value['customer_name'] ?></td>
+					<td><?php echo $value['weight'] ?></td>
+					<td><?php echo $value['harga'] ?></td>
 					<td>
-						<a href="<?php echo base_url('Admin/Order/clear/'.$value['order_id']) ?>" class="btn btn-sm btn-primary">Clear</a>
+						<a href="<?php echo base_url('Admin/Order/clear/'.$value['id']) ?>" class="btn btn-sm btn-primary">Clear</a>
 					</td>
 				</tr>
 			<?php endforeach ?>

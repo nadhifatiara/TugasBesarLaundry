@@ -60,9 +60,9 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#">
+                <a class="nav-link" href="<?php echo base_url('admin/Order/laporan') ?>">
                   <span data-feather="layers"></span>
-                  Transaction
+                  Transaction Report
                 </a>
               </li>
             </ul>

@@ -1,15 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.7.4
--- https://www.phpmyadmin.net/
+-- version 4.5.1
+-- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: May 08, 2018 at 05:51 PM
--- Server version: 10.1.26-MariaDB
--- PHP Version: 7.1.9
+-- Generation Time: 19 Jul 2018 pada 15.43
+-- Versi Server: 10.1.8-MariaDB
+-- PHP Version: 5.6.14
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
-START TRANSACTION;
 SET time_zone = "+00:00";
 
 
@@ -25,64 +23,26 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `customer`
+-- Struktur dari tabel `level`
 --
 
-CREATE TABLE `customer` (
-  `customer_id` int(11) NOT NULL,
-  `customer_firstname` varchar(32) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `customer_lastname` varchar(32) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `customer_address` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `customer_telp` int(12) NOT NULL,
-  `customer_email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `customer_password` varchar(15) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `customer_image` varchar(20) COLLATE utf8mb4_unicode_ci NOT NULL
+CREATE TABLE `level` (
+  `id` int(11) NOT NULL,
+  `name` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data for table `customer`
+-- Dumping data untuk tabel `level`
 --
 
-INSERT INTO `customer` (`customer_id`, `customer_firstname`, `customer_lastname`, `customer_address`, `customer_telp`, `customer_email`, `customer_password`, `customer_image`) VALUES
-(1, '1', '1', 'setdrftugyhujikolp', 1, '1', '1', 'cow.png'),
-(2, 'fhgbjhnjm', 'vbnm', 'nananananananananna', 123456789, 'dcfvgbhnjmlk,l', 'sxdcgfnhkm', 'dog.png');
+INSERT INTO `level` (`id`, `name`) VALUES
+(1, 'admin'),
+(2, 'user');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `employee`
---
-
-CREATE TABLE `employee` (
-  `employee_id` int(11) NOT NULL,
-  `employee_firstname` varchar(32) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `employee_lastname` varchar(32) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `employee_address` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `employee_telp` int(12) NOT NULL,
-  `employee_email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `employee_password` varchar(15) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `employee_image` varchar(20) COLLATE utf8mb4_unicode_ci NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `order`
---
-
-CREATE TABLE `order` (
-  `order_id` int(11) NOT NULL,
-  `order_date` date NOT NULL,
-  `order_address` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `order_cost` int(11) NOT NULL,
-  `fk_customers_id` int(11) NOT NULL,
-  `fk_employee_id` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `perfume`
+-- Struktur dari tabel `perfume`
 --
 
 CREATE TABLE `perfume` (
@@ -91,40 +51,47 @@ CREATE TABLE `perfume` (
   `perfume_costperkilo` int(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+--
+-- Dumping data untuk tabel `perfume`
+--
+
+INSERT INTO `perfume` (`perfume_id`, `perfume_name`, `perfume_costperkilo`) VALUES
+(1, 'vanila', 1000);
+
 -- --------------------------------------------------------
 
 --
--- Table structure for table `section`
+-- Struktur dari tabel `transaksi`
 --
 
-CREATE TABLE `section` (
-  `section_id` int(11) NOT NULL,
-  `section_name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `section_salary` int(50) NOT NULL
+CREATE TABLE `transaksi` (
+  `id` int(11) NOT NULL,
+  `date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `fk_users_customer` int(11) NOT NULL,
+  `address` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `fk_perfume` int(11) NOT NULL,
+  `fk_typelaundry` int(11) NOT NULL,
+  `fk_users_courier` int(11) DEFAULT NULL,
+  `weight_item` int(11) DEFAULT NULL,
+  `status` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- --------------------------------------------------------
-
 --
--- Table structure for table `transaction`
+-- Dumping data untuk tabel `transaksi`
 --
 
-CREATE TABLE `transaction` (
-  `transaction_id` int(11) NOT NULL,
-  `transaction_datereceipt` date NOT NULL,
-  `transaction_datetake` date NOT NULL,
-  `transaction_kilo` int(11) NOT NULL,
-  `transaction_discount` int(11) NOT NULL,
-  `fk_customers_id` int(11) NOT NULL,
-  `fk_employee_id` int(11) NOT NULL,
-  `fk_typelaundry_id` int(11) NOT NULL,
-  `fk_perfume_id` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+INSERT INTO `transaksi` (`id`, `date`, `fk_users_customer`, `address`, `fk_perfume`, `fk_typelaundry`, `fk_users_courier`, `weight_item`, `status`) VALUES
+(2, '2018-07-19 19:16:20', 5, '1', 1, 1, NULL, NULL, 1),
+(3, '2018-07-19 19:19:03', 5, '1', 1, 1, 4, 1, 5),
+(4, '2018-07-19 19:19:10', 5, '1', 1, 1, 4, NULL, 2),
+(5, '2018-07-19 20:24:35', 5, '1', 1, 1, NULL, NULL, 1),
+(6, '2018-07-19 20:26:26', 5, '11', 1, 1, NULL, NULL, 1),
+(7, '2018-07-19 20:26:40', 5, '1', 1, 1, NULL, NULL, 1);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `typelaundry`
+-- Struktur dari tabel `typelaundry`
 --
 
 CREATE TABLE `typelaundry` (
@@ -134,35 +101,49 @@ CREATE TABLE `typelaundry` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data for table `typelaundry`
+-- Dumping data untuk tabel `typelaundry`
 --
 
 INSERT INTO `typelaundry` (`typelaundry_id`, `typelaundry_name`, `typelaundry_costperkilo`) VALUES
-(1, '1', 1),
-(2, '2', 2),
-(3, '3', 3);
+(1, 'cuci kering', 1000);
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `users`
+--
+
+CREATE TABLE `users` (
+  `id` int(11) NOT NULL,
+  `firstname` varchar(20) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `lastname` varchar(20) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `address` varchar(90) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `telp` varchar(15) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `username` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `password` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `image` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `fk_id_level` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data untuk tabel `users`
+--
+
+INSERT INTO `users` (`id`, `firstname`, `lastname`, `address`, `telp`, `username`, `password`, `image`, `fk_id_level`) VALUES
+(4, 'a', 'a', '1', '1', '2', 'c81e728d9d4c2f636f067f89cc14862c', '1.PNG', 1),
+(5, '1', '1', '1', '1', '1', 'c4ca4238a0b923820dcc509a6f75849b', '11.PNG', 2),
+(6, 'asdasdasd', 'asdasdasd', 'asdasdasdasd', 'asdasdasdas', 'tholibsaddasd', '1b2f8c4f06f54d70403b77b0fa41df2c', '12.PNG', 2),
+(7, 'asdasd', 'asdasd', 'asdasd', 'asdadasdasd', 'tholib111', '1bbd886460827015e5d605ed44252251', '13.PNG', 2);
 
 --
 -- Indexes for dumped tables
 --
 
 --
--- Indexes for table `customer`
+-- Indexes for table `level`
 --
-ALTER TABLE `customer`
-  ADD PRIMARY KEY (`customer_id`);
-
---
--- Indexes for table `employee`
---
-ALTER TABLE `employee`
-  ADD PRIMARY KEY (`employee_id`);
-
---
--- Indexes for table `order`
---
-ALTER TABLE `order`
-  ADD PRIMARY KEY (`order_id`);
+ALTER TABLE `level`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `perfume`
@@ -171,16 +152,14 @@ ALTER TABLE `perfume`
   ADD PRIMARY KEY (`perfume_id`);
 
 --
--- Indexes for table `section`
+-- Indexes for table `transaksi`
 --
-ALTER TABLE `section`
-  ADD PRIMARY KEY (`section_id`);
-
---
--- Indexes for table `transaction`
---
-ALTER TABLE `transaction`
-  ADD PRIMARY KEY (`transaction_id`);
+ALTER TABLE `transaksi`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `fk_users_customer` (`fk_users_customer`),
+  ADD KEY `fk_perfume` (`fk_perfume`),
+  ADD KEY `fk_typelaundry` (`fk_typelaundry`),
+  ADD KEY `fk_users_courier` (`fk_users_courier`);
 
 --
 -- Indexes for table `typelaundry`
@@ -189,51 +168,59 @@ ALTER TABLE `typelaundry`
   ADD PRIMARY KEY (`typelaundry_id`);
 
 --
+-- Indexes for table `users`
+--
+ALTER TABLE `users`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `fk_id_level` (`fk_id_level`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT for table `customer`
+-- AUTO_INCREMENT for table `level`
 --
-ALTER TABLE `customer`
-  MODIFY `customer_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
-
---
--- AUTO_INCREMENT for table `employee`
---
-ALTER TABLE `employee`
-  MODIFY `employee_id` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `order`
---
-ALTER TABLE `order`
-  MODIFY `order_id` int(11) NOT NULL AUTO_INCREMENT;
-
+ALTER TABLE `level`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `perfume`
 --
 ALTER TABLE `perfume`
-  MODIFY `perfume_id` int(11) NOT NULL AUTO_INCREMENT;
-
+  MODIFY `perfume_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
--- AUTO_INCREMENT for table `section`
+-- AUTO_INCREMENT for table `transaksi`
 --
-ALTER TABLE `section`
-  MODIFY `section_id` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `transaction`
---
-ALTER TABLE `transaction`
-  MODIFY `transaction_id` int(11) NOT NULL AUTO_INCREMENT;
-
+ALTER TABLE `transaksi`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 --
 -- AUTO_INCREMENT for table `typelaundry`
 --
 ALTER TABLE `typelaundry`
-  MODIFY `typelaundry_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
-COMMIT;
+  MODIFY `typelaundry_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+--
+-- AUTO_INCREMENT for table `users`
+--
+ALTER TABLE `users`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+--
+-- Ketidakleluasaan untuk tabel pelimpahan (Dumped Tables)
+--
+
+--
+-- Ketidakleluasaan untuk tabel `transaksi`
+--
+ALTER TABLE `transaksi`
+  ADD CONSTRAINT `transaksi_ibfk_1` FOREIGN KEY (`fk_perfume`) REFERENCES `perfume` (`perfume_id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `transaksi_ibfk_2` FOREIGN KEY (`fk_users_customer`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `transaksi_ibfk_3` FOREIGN KEY (`fk_users_courier`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `transaksi_ibfk_4` FOREIGN KEY (`fk_typelaundry`) REFERENCES `typelaundry` (`typelaundry_id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Ketidakleluasaan untuk tabel `users`
+--
+ALTER TABLE `users`
+  ADD CONSTRAINT `users_ibfk_1` FOREIGN KEY (`fk_id_level`) REFERENCES `level` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

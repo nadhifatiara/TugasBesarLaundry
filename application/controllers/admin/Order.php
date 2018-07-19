@@ -21,11 +21,10 @@ class Order extends CI_Controller {
 	public function transaction($id)
 	{
 		$data['id'] = $id;
+		$data['perkilo'] = $this->Order_m->get_harga($id);
 		$this->load->library('form_validation');
-		$this->form_validation->set_rules('order_kilo','Kilo','required');
+		$this->form_validation->set_rules('weight','Weight','required');
 		if ($this->form_validation->run() == false) {
-			$data['typelaundry'] = $this->Order_m->get_typelaundry();
-			$data['perfume'] = $this->Order_m->get_perfume();
 			$this->load->view('admin/order/order_transaction',$data);
 		}else{
 			$this->Order_m->order_transaction($id);
@@ -62,9 +61,9 @@ class Order extends CI_Controller {
 		$this->Order_m->order_take($id);
 		redirect('Admin/Order/taked/'.$id,'refresh');
 	}
-	public function taked($id)
+	public function laporan()
 	{
-		redirect('admin/order/order_finding','refresh');
-		//echo "berhasil mengambil, id = ".$id;
+		$data['list_order'] = $this->Order_m->getData();
+		$this->load->view('admin/order/order_laporan',$data);
 	}
 }

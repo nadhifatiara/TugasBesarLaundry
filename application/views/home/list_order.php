@@ -9,21 +9,29 @@
               <tr>
                 <th>#</th>
                 <th>Date</th>
-                <th>Address</th>
-                <th>Cost</th>
-                <th>Status</th>
+        <th>Address</th>
+        <th>Perfume</th>
+        <th>Typelaundry</th>
+        <th>Customers Name</th>
+        <th>Weight</th>
+        <th>Total</th>
+      <th>Status</th>
               </tr>
             </thead>
             <tbody>
               <?php foreach ($list_order as $key => $value): ?>
                 <tr>
                   <td><?php echo ++$key ?></td>
-                  <td><?php echo $value['order_date'] ?></td>
-                  <td><?php echo $value['order_address'] ?></td>
-                  <td><?php echo $value['order_cost'] ?></td>
+                  <td><?php echo $value['date'] ?></td>
+          <td><?php echo $value['address'] ?></td>
+          <td><?php echo $value['perfume'] ?></td>
+          <td><?php echo $value['typelaundry'] ?></td>
+          <td><?php echo $value['customer_name'] ?></td>
+          <td><?php echo $value['weight'] ?></td>
+          <td><?php echo $value['harga'] ?></td>
                   <td>
                     <?php 
-                    switch ($value['order_status']) {
+                    switch ($value['status']) {
                       case 1:
                         $var = 'Finding';
                         break;
@@ -37,7 +45,7 @@
                         $var = 'Process';
                         break;
                         case 5:
-                        $var = 'Finish';
+                        $var = 'Kirim Barang';
                         break;
                         case 6:
                         $var = 'Taked';

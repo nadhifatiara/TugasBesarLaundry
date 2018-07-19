@@ -5,19 +5,15 @@
       <a class="p-2 text-white" href="<?php echo base_url('Home') ?>">Home</a>
       <a class="p-2 text-white" href="<?php echo base_url('Home/Perfume') ?>">Perfume</a>
       <a class="p-2 text-white" href="<?php echo base_url('Home/about') ?>">About</a>
+      <a class="p-2 text-white" href="<?php echo base_url('Home/list_order') ?>">List Order</a>
     </nav>
-    <?php if($this->session->userdata('fk_customers_id') != null){
-      $image = $this->db->where('customer_id',$this->session->userdata('fk_customers_id'))->get('customer')->row(0)->customer_image;
-    } ?>
     <?php if (!$this->session->userdata('logged_in'))
     : ?>
     <a class="btn btn-outline-light" href="<?php echo base_url('Login/login') ?>">Sign In</a>
     <?php else: ?>
       <div class="dropdown">
         <a class="btn btn-outline-light" data-toggle="dropdown" >
-          <?php if (isset($image)): ?>
-          <img src="<?php echo base_url('assets/upload/customer/'.$image) ?>" alt="" style="width: 20px;">
-          <?php endif ?>
+          <img src="<?php echo base_url('assets/upload/users/'.$this->session->userdata('image')) ?>" alt="" style="width: 20px;">
         </a>
         <div class="dropdown-menu">
           <a class="dropdown-item" href="<?php echo base_url('Home/list_order') ?>"">Status</a>

@@ -248,19 +248,19 @@ p {
     <?php echo form_open_multipart('Login/register',array('class'=>'form login')) ?>
     <div class="form__field">
         <label for="login__username"><svg class="icon"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#user"></use></svg><span class="hidden">First Name</span></label>
-        <input id="login__username" type="text" name="customer_firstname" class="form__input" placeholder="First Name">
+        <input id="login__username" type="text" name="firstname" class="form__input" placeholder="First Name">
       </div>
       <div class="form__field">
         <label for="login__username"><svg class="icon"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#user"></use></svg><span class="hidden">Last Name</span></label>
-        <input id="login__username" type="text" name="customer_lastname" class="form__input" placeholder="Last Name">
+        <input id="login__username" type="text" name="lastname" class="form__input" placeholder="Last Name">
       </div>
       <div class="form__field">
         <label for="login__username"><svg class="icon"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#user"></use></svg><span class="hidden">Username</span></label>
-        <input id="login__username" type="text" name="customer_address" class="form__input" placeholder="Address">
+        <input id="login__username" type="text" name="address" class="form__input" placeholder="Address">
       </div>
       <div class="form__field">
         <label for="login__username"><svg class="icon"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#user"></use></svg><span class="hidden">Username</span></label>
-        <input id="login__username" type="text" name="customer_telp" class="form__input" placeholder="Telp">
+        <input id="login__username" type="text" name="telp" class="form__input" placeholder="Telp">
       </div>
  <div class="form__field">
         <label for="login__username"><svg class="icon"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#user"></use></svg><span class="hidden">Username</span></label>

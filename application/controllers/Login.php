@@ -26,8 +26,8 @@ class Login extends CI_Controller {
 					'id' => $result->id,
 					'username' => $username,
 					'level' => $result->fk_id_level,
+					'image' => $result->image,
 					'logged_in' => true,
-					'fk_customers_id' => $result->fk_customer_id,
 				);
 				$this->session->set_userdata($user_data);
 
@@ -35,7 +35,7 @@ class Login extends CI_Controller {
 				$this->session->set_flashdata('user_loggedin', 'You are now logged in');
 
 				if ($user_data['level'] == '1') {
-					redirect('Customer');
+					redirect('Users');
 				}else{
 					redirect('Home','refresh');
 				}
@@ -61,10 +61,10 @@ class Login extends CI_Controller {
 
 	public function register()
 	{
-		$this->form_validation->set_rules('customer_firstname', 'First Name', 'required|regex_match[/^[a-zA-Z ]*$/]');
-		$this->form_validation->set_rules('customer_lastname', 'Last Name', 'required|regex_match[/^[a-zA-Z ]*$/]');
-		$this->form_validation->set_rules('customer_address', 'Address', 'required');
-		$this->form_validation->set_rules('customer_telp', 'Telp', 'required|min_length[10]|max_length[16]');
+		$this->form_validation->set_rules('firstname', 'First Name', 'required|regex_match[/^[a-zA-Z ]*$/]');
+		$this->form_validation->set_rules('lastname', 'Last Name', 'required|regex_match[/^[a-zA-Z ]*$/]');
+		$this->form_validation->set_rules('address', 'Address', 'required');
+		$this->form_validation->set_rules('telp', 'Telp', 'required|min_length[10]|max_length[16]');
 		$this->form_validation->set_rules('username', 'Username', 'required|min_length[8]|is_unique[users.username]');
 		$this->form_validation->set_rules('password', 'Password', 'required|min_length[8]');
 		$this->form_validation->set_message('regex_match','%s Tidak Sesuai');
@@ -72,7 +72,7 @@ class Login extends CI_Controller {
 		if($this->form_validation->run() === FALSE){
 			$this->load->view('register');
 		} else {
-			$config['upload_path'] = './assets/upload/customer/';
+			$config['upload_path'] = './assets/upload/users/';
 			$config['allowed_types'] = 'gif|jpg|png';
 			$config['max_size']  = '10000';
 			$config['max_width']  = '10240';
@@ -85,34 +85,26 @@ class Login extends CI_Controller {
 				$this->load->view('register',$data);
 			}
 			else{
-				var_dump($this->upload->data());
-				$set_customer = array(
-					'customer_firstname' => $this->input->post('customer_firstname'),
-					'customer_lastname' => $this->input->post('customer_lastname'),
-					'customer_address' => $this->input->post('customer_address'),
-					'customer_telp' => $this->input->post('customer_telp'),
-					'customer_image' => $this->upload->data('file_name')
+				$set_users = array(
+					'firstname' => $this->input->post('firstname'),
+					'lastname' => $this->input->post('lastname'),
+					'address' => $this->input->post('address'),
+					'telp' => $this->input->post('telp'),
+					'image' => $this->upload->data('file_name'),
+					'username' => $this->input->post('username'),
+					'password' => md5($this->input->post('password')),
+					'fk_id_level' => 2
 				);
-			$this->db->insert('customer',$set_customer);
-			$id = $this->db->insert_id();
-			$set_users = array(
-				'username' => $this->input->post('username'),
-				'password' => md5($this->input->post('password')),
-				'fk_id_level' => 2,
-				'fk_employee_id' => null,
-				'fk_customer_id' => $id
-			);
-			$this->db->insert('users',$set_users);
-			$id_user = $this->db->insert_id();
-			$user_data = array(
+				$this->db->insert('users',$set_users);
+				$id_user = $this->db->insert_id();
+				$user_data = array(
 					'id' => $id_user,
 					'username' => $this->input->post('username'),
 					'level' => 2,
 					'logged_in' => true,
-					'fk_customers_id' => $id,
-			);
-			$this->session->set_userdata($user_data);
-			redirect('Home','refresh');	
+				);
+				$this->session->set_userdata($user_data);
+				redirect('Home','refresh');	
 			}
 			
 		}
