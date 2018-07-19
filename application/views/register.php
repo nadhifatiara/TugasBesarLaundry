@@ -244,13 +244,14 @@ p {
 
   <div class="grid">
 <?php echo validation_errors(); ?>
-    <?php echo form_open('Login/register',array('class'=>'form login')) ?>
+      <?php echo (isset($error)?$error:"")?>
+    <?php echo form_open_multipart('Login/register',array('class'=>'form login')) ?>
     <div class="form__field">
-        <label for="login__username"><svg class="icon"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#user"></use></svg><span class="hidden">Username</span></label>
+        <label for="login__username"><svg class="icon"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#user"></use></svg><span class="hidden">First Name</span></label>
         <input id="login__username" type="text" name="customer_firstname" class="form__input" placeholder="First Name">
       </div>
       <div class="form__field">
-        <label for="login__username"><svg class="icon"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#user"></use></svg><span class="hidden">Username</span></label>
+        <label for="login__username"><svg class="icon"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#user"></use></svg><span class="hidden">Last Name</span></label>
         <input id="login__username" type="text" name="customer_lastname" class="form__input" placeholder="Last Name">
       </div>
       <div class="form__field">
@@ -270,14 +271,16 @@ p {
         <label for="login__password"><svg class="icon"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#lock"></use></svg><span class="hidden">Password</span></label>
         <input id="login__password" type="password" name="password" class="form__input" placeholder="Password">
       </div>
-
       <div class="form__field">
-        <input type="submit" value="Sign In">
+        <input id="login_upload" type="file" name="image" class="form__input">
+      </div>
+      <div class="form__field">
+        <input type="submit" value="Sign up">
       </div>
       <?php echo form_close(); ?>
     
 
-    <p class="text--center">Not a member? <a href="#">Sign up now</a> <svg class="icon"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="assets/images/icons.svg#arrow-right"></use></svg></p>
+    <p class="text--center">Already a member? <a href="<?php echo site_url('Login/login') ?>">Sign in now</a> <svg class="icon"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="assets/images/icons.svg#arrow-right"></use></svg></p>
 
   </div>
 

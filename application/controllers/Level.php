@@ -1,26 +1,26 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Section extends CI_Controller {
+class Level extends CI_Controller {
 
 	//konstruktor (statement yang selalu dipanggil pada setiap function)
 	function __construct() {
 		parent::__construct();
-		//load model Section_m
-		$this->load->model('Section_m');
+		//load model Level_m
+		$this->load->model('Level_m');
 		//load helper form
 		$this->load->helper('form');	
 	}
 
 	/* index (fungsi yang akan berjalan jika tidak ada fungsi yang dipangggil)
-	jika url = ".[]/section" maka fungsi index yang dijalankan */
+	jika url = ".[]/level" maka fungsi index yang dijalankan */
 	public function index()
 	{
 		/* mengisi $data['getData'] berupa data yang 
-		terlah direturn pada fungsi getData() pada Section_m */
-		$data['getData'] = $this->Section_m->getData();
-		// memanggil view 'section/section.php' dan diberi variable $data
-		$this->load->view('admin/section/section.php',$data);
+		terlah direturn pada fungsi getData() pada Level_m */
+		$data['getData'] = $this->Level_m->getData();
+		// memanggil view 'level/level.php' dan diberi variable $data
+		$this->load->view('admin/level/level.php',$data);
 	}
 
 	public function tambah()
@@ -32,8 +32,7 @@ class Section extends CI_Controller {
 		- parameter 2 ('ID') = untuk tampilan error
 		- parameter 3 ('required') = rule nya (ada banyak rule buka di userguide)
 		*/
-		$this->form_validation->set_rules('section_name','Name','required');
-		$this->form_validation->set_rules('section_salary','Cost Per Kilo','required');
+		$this->form_validation->set_rules('name','Name','required');
 		
 
 		// intinya membuat warna error menjadi merah :D
@@ -42,20 +41,20 @@ class Section extends CI_Controller {
 
 		// if jika kita belum melakukan submit
 		if($this->form_validation->run()==FALSE){
-			//menampilkan view 'section/tambah.php'
-			$this->load->view('admin/section/tambah.php'); 
+			//menampilkan view 'level/tambah.php'
+			$this->load->view('admin/level/tambah.php'); 
 		}
 		// jika kita sudah melalukan submit
 		else{
 			//memanggil fungsi insertData pada model
-			$this->Section_m->insertData();
-			//redirect / pergi ke halaman 'section'
-			redirect('section');
+			$this->Level_m->insertData();
+			//redirect / pergi ke halaman 'level'
+			redirect('Level');
 		}
 	}
 
 	/*$id adalah parameter
-	contoh penggunakan section/ubah/1 
+	contoh penggunakan level/ubah/1 
 	*/ 
 	public function ubah($id)
 	{
@@ -66,8 +65,7 @@ class Section extends CI_Controller {
 		- parameter 2 ('ID') = untuk tampilan error
 		- parameter 3 ('required') = rule nya (ada banyak rule buka di userguide)
 		*/
-		$this->form_validation->set_rules('section_name','Name','required');
-		$this->form_validation->set_rules('section_salary','Cost Per Kilo','required');
+		$this->form_validation->set_rules('name','Name','required');
 
 		// intinya membuat warna error menjadi merah :D
 		$this->form_validation->set_error_delimiters('<div class="text-danger">', '</div>');
@@ -75,29 +73,29 @@ class Section extends CI_Controller {
 		
 
 		//memberikan data berisi data yang sesuai dengan $id
-		$data['getData'] = $this->Section_m->getDataWhereId($id)[0];
+		$data['getData'] = $this->Level_m->getDataWhereId($id)[0];
 
 		// if jika kita belum melakukan submit
 		if($this->form_validation->run()==FALSE){
-			//menampilkan view 'section/ubah.php'
-			$this->load->view('admin/section/ubah',$data);
+			//menampilkan view 'level/ubah.php'
+			$this->load->view('admin/level/ubah',$data);
 		}
 		// jika kita sudah melalukan submit
 		else{
 			//memanggil fungsi insertData pada model
-			$this->Section_m->updateData($id);
-			//redirect / pergi ke halaman 'section'
-			redirect('section');
+			$this->Level_m->updateData($id);
+			//redirect / pergi ke halaman 'level'
+			redirect('Level');
 		}
 	}
 
 	/*$id adalah parameter
-	contoh penggunakan section/hapus/1 
+	contoh penggunakan level/hapus/1 
 	*/ 
 	public function hapus($id)
 	{
 		//memanggil fungsi hapusData pada model
-		$this->Section_m->hapusData($id);
-		redirect('section');
+		$this->Level_m->hapusData($id);
+		redirect('Level');
 	}
 }

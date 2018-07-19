@@ -11,21 +11,16 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="<?php echo base_url('Customer') ?>">
+                <a class="nav-link" href="<?php echo base_url('Users') ?>">
                   <span data-feather="file"></span>
-                  Customers
+                  Users
                 </a>
               </li>
+              
               <li class="nav-item">
-                <a class="nav-link" href="<?php echo base_url('Employee') ?>">
-                  <span data-feather="shopping-cart"></span>
-                  Employee
-                </a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="<?php echo base_url('Section') ?>">
+                <a class="nav-link" href="<?php echo base_url('Level') ?>">
                   <span data-feather="users"></span>
-                  Section
+                  Level
                 </a>
               </li>
               <li class="nav-item">

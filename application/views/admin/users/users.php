@@ -5,8 +5,8 @@
 	<?php if($this->session->flashdata('user_loggedin')): ?>
          <?php echo '<p class="alert alert-success">'.$this->session->flashdata('user_loggedin').'</p>'; ?>
        <?php endif; ?>
-	<h1>Customer</h1>
-	<a href="<?php echo base_url('customer/tambah') ?>" class="btn btn-primary mb-3">Tambah</a>
+	<h1>Users</h1>
+	<a href="<?php echo base_url('Users/tambah') ?>" class="btn btn-primary mb-3">Tambah</a>
 
 	<!-- File Header -->
 	<table class="table table-striped table-bordered" width="100%" id="example">
@@ -18,7 +18,7 @@
 				<th>Last Name</th>
 				<th>Address</th>
 				<th>Telp</th>
-				<th>Email</th>
+				<th>Username</th>
 				<th>Password</th>
 				<th>Photo</th>
 				<th>Aksi</th>
@@ -28,18 +28,18 @@
 			<?php foreach ($getData as $key => $value): ?>
 				<tr>
 					<!-- Sesuaikan Column Table -->
-					<td><?php echo $value['customer_id'] ?></td>
-					<td><?php echo $value['customer_firstname'] ?></td>
-					<td><?php echo $value['customer_lastname'] ?></td>
-					<td><?php echo $value['customer_address'] ?></td>
-					<td><?php echo $value['customer_telp'] ?></td>
-					<td><?php echo $value['customer_email'] ?></td>
-					<td><?php echo $value['customer_password'] ?></td>
-					<td><img src="<?php echo base_url() ?>/assets/upload/customer/<?php echo $value['customer_image'] ?>" alt="" width="100px" height="80px"></td>
+					<td><?php echo $value['id'] ?></td>
+					<td><?php echo $value['firstname'] ?></td>
+					<td><?php echo $value['lastname'] ?></td>
+					<td><?php echo $value['address'] ?></td>
+					<td><?php echo $value['telp'] ?></td>
+					<td><?php echo $value['username'] ?></td>
+					<td><?php echo $value['password'] ?></td>
+					<td><img src="<?php echo base_url() ?>/assets/upload/Users/<?php echo $value['image'] ?>" alt="" width="100px" height="80px"></td>
 					<td>
 						<!-- --AKSI-- -->
-						<a href="<?php echo base_url('customer/ubah/'.$value['customer_id']) ?>" class="btn btn-sm btn-success">Ubah</a>
-						<a href="<?php echo base_url('customer/hapus/'.$value['customer_id']) ?>" class="btn btn-sm btn-danger">Hapus</a>
+						<a href="<?php echo base_url('Users/ubah/'.$value['id']) ?>" class="btn btn-sm btn-success">Ubah</a>
+						<a href="<?php echo base_url('Users/hapus/'.$value['id']) ?>" class="btn btn-sm btn-danger">Hapus</a>
 					</td>
 				</tr>
 			<?php endforeach ?>

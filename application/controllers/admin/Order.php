@@ -64,6 +64,7 @@ class Order extends CI_Controller {
 	}
 	public function taked($id)
 	{
-		echo "berhasil mengambil, id = ".$id;
+		redirect('admin/order/order_finding','refresh');
+		//echo "berhasil mengambil, id = ".$id;
 	}
 }
