@@ -13,6 +13,7 @@
 				<th>ID</th>
 				<th>Name</th>
 				<th>Cost Per Kilo</th>
+				<th>Image</th>
 				<th>Aksi</th>
 			</tr>
 		</thead>
@@ -23,6 +24,7 @@
 					<td><?php echo $value['perfume_id'] ?></td>
 					<td><?php echo $value['perfume_name'] ?></td>
 					<td><?php echo $value['perfume_costperkilo'] ?></td>
+					<td><img src="<?php echo base_url("assets/upload/perfume/".$value['perfume_image']); ?>" alt="" style="width: 100px"></td>
 					<td>
 						<!-- --AKSI-- -->
 						<a href="<?php echo base_url('perfume/ubah/'.$value['perfume_id']) ?>" class="btn btn-sm btn-success">Ubah</a>

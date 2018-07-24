@@ -47,10 +47,24 @@ class Perfume extends CI_Controller {
 		}
 		// jika kita sudah melalukan submit
 		else{
-			//memanggil fungsi insertData pada model
-			$this->Perfume_m->insertData();
-			//redirect / pergi ke halaman 'perfume'
-			redirect('perfume');
+			$config['upload_path'] = './assets/upload/perfume/';
+			$config['allowed_types'] = 'gif|jpg|png';
+			$config['max_size']  = '10000';
+			$config['max_width']  = '10240';
+			$config['max_height']  = '7680';
+			
+			$this->load->library('upload', $config);
+			
+			if ( ! $this->upload->do_upload('image')){
+				$data['error'] = $this->upload->display_errors();
+				$this->load->view('admin/perfume/tambah.php',$data); 
+			}
+			else{
+				//memanggil fungsi insertData pada model
+				$this->Perfume_m->insertData();
+				//redirect / pergi ke halaman 'perfume'
+				redirect('perfume');
+			}
 		}
 	}
 

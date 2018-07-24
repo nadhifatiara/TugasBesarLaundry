@@ -44,7 +44,9 @@ class Home extends CI_Controller {
 	public function perfume()
 	{
 		$this->load->model('Perfume_m');
-
+		$this->load->model('Typelaundry_m');
+		$data['perfume'] = $this->Perfume_m->getData();
+		$data['typelaundry'] = $this->Typelaundry_m->getData(); 
 		$limit_per_page=6;
 		$start_index = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
 		$total_records= $this->Perfume_m->get_total();
@@ -61,38 +63,30 @@ class Home extends CI_Controller {
 			$data['links'] = $this->pagination->create_links();
 		}
 
-		$this->load->view('home/header');
-		$this->load->view('home/navbar');
 		$this->load->view('home/perfume',$data);
-		$this->load->view('home/footer');
 	}
 	public function list_order()
 	{
+		$this->load->model('Typelaundry_m');
+		$this->load->model('Perfume_m');
+		$data['perfume'] = $this->Perfume_m->getData();
+		$data['typelaundry'] = $this->Typelaundry_m->getData(); 
 		if (!$this->session->userdata('logged_in')) {
 			echo '<script>alert("Harus Login Dolo")</script>';
 			redirect('Login/login','refresh');
 		}
 		$this->load->model('Order_m');
 		$data['list_order'] = $this->Order_m->getDataCustomer();
-		$this->load->view('home/header');
-		$this->load->view('home/navbar');
 		$this->load->view('home/list_order',$data);
-		$this->load->view('home/footer');
 	}
 	
-	public function kirim_barang($id)
-	{
-		$set['status'] = 6;
-		$this->db->where('id',$id);
-		$this->db->update('transaksi',$set);
-		redirect('Home/list_order','refresh');
-	}
 
 	public function about()
 	{
-		$this->load->view('home/header');
-		$this->load->view('home/navbar');
-		$this->load->view('home/about');
-		$this->load->view('home/footer');
+		$this->load->model('Typelaundry_m');
+		$this->load->model('Perfume_m');
+		$data['perfume'] = $this->Perfume_m->getData();
+		$data['typelaundry'] = $this->Typelaundry_m->getData(); 
+		$this->load->view('home/about',$data);
 	}
 }

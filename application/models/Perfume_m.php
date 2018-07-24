@@ -36,11 +36,9 @@ class Perfume_m extends CI_Model {
 			'perfume_id' yang dikanan harus menurut name inputnya */
 			'perfume_id' => $this->input->post('perfume_id'),
 			'perfume_name' => $this->input->post('perfume_name'),
-			'perfume_costperkilo' => $this->input->post('perfume_costperkilo')
+			'perfume_costperkilo' => $this->input->post('perfume_costperkilo'),
+			'perfume_image' => $this->upload->data('file_name')
 		);
-		/* jika semua sama sperti di table
-		gunakan versi simple seprti berikut */
-		$data = $this->input->post();
 		/* eksekusi query insert into "perfume" diisi dengan variable $data
 		face2face ae lek bingung :| */
 		$this->db->insert("perfume",$data);

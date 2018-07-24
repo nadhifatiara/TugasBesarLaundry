@@ -10,7 +10,7 @@
 	name pada input harus sama dengan table didatabase
 	intinya hanya pada syntax input dan form saja lainnya dari bootstrap e
 	 -->
-	<form action="<?php echo base_url('perfume/tambah'); ?>" method="post">
+	<?php echo form_open_multipart('perfume/tambah'); ?>
 		<div class="form-group row">
 			<label for="perfume_name" class="col-sm-2 col-form-label">Perfume name</label>
 			<div class="col-sm-10">
@@ -26,10 +26,17 @@
 			</div>
 		</div>
 		<div class="form-group row">
+			<label for="perfume_costperkilo" class="col-sm-2 col-form-label">Gambar</label>
+			<div class="col-sm-10">
+				<input type="file" name="image" class="form-control">
+				<?php if(isset($error)) echo $error ?>
+			</div>
+		</div>
+		<div class="form-group row">
 			<label for="col-sm-2"></label>
 			<input type="submit" class="btn btn-primary" value="Tambah">
 		</div>
-	</form>
+	<?php echo form_close(); ?>
 	<!-- load footer -->
 
 
