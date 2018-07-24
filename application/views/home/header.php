@@ -56,3 +56,46 @@
             </div>
           </div>
         </header>
+        <div class="banner-area">
+          <div class="container">
+            <div class="row height align-items-center">
+              <div class="col-lg-7">
+                <div class="banner-content">
+                  <h1 class="text-white text-uppercase mb-10">Laundry, <br> Where ever you are</h1>
+                  <p class="text-white mb-30"></p>
+                  <?php if (!$this->session->userdata("logged_in")): ?>
+                    <a href="<?php echo base_url('Login/login') ?>" class="primary-btn d-inline-flex align-items-center"><span class="mr-10">Log in First</span><span class="lnr lnr-arrow-right"></span></a>
+                  
+                  <?php endif ?>
+                  <?php if ($this->session->userdata("logged_in") && $this->session->flashdata('order_data') == null): ?>
+                   <?php echo form_open("Home/order"); ?>
+                   <div class="col-md-12">
+                      <div class="input-group">
+                      <select name="perfume" id="" class="form-control">
+                      <?php foreach ($perfume as $key => $value): ?>
+                        <option value="<?php echo $value['perfume_id'] ?>"><?php echo $value['perfume_name']." Rp.".$value['perfume_costperkilo'] ?></option>
+                      <?php endforeach ?>
+                    </select>
+                    <select name="typelaundry" id="" class="form-control">
+                      <?php foreach ($typelaundry as $key => $value): ?>
+                        <option value="<?php echo $value['typelaundry_id'] ?>"><?php echo $value['typelaundry_name']." Rp. ".$value['typelaundry_costperkilo'] ?></option>
+                      <?php endforeach ?>
+                    </select>
+                   
+                    </div>
+                     <input type="text" name="address" class="single-input" placeholder="Address Pickup">
+                     <input type="submit" class="genric-btn primary-border btn-block" value="Pick Up">
+                   </div>
+                   <?php echo form_close(); ?>
+                    <?php endif ?>
+                    <?php if ($this->session->flashdata('order_data') != null): ?>
+
+                      <p class="text-white">Pemesanan Anda Sedang Diproses, <a href="<?php echo base_url("Home/list_order") ?>" class="btn btn-primary cicle">Check Transaksi</a></p>
+                    <?php endif ?>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>

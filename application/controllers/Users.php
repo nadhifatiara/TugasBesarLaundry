@@ -10,6 +10,9 @@ class Users extends CI_Controller {
 		$this->load->model('Users_m');
 		//load helper form 
 		$this->load->helper('form');	
+		if($this->session->userdata("id") == null){
+			redirect("Home");
+		}
 	}
 
 	/* index (fungsi yang akan berjalan jika tidak ada fungsi yang dipangggil)
@@ -101,7 +104,7 @@ class Users extends CI_Controller {
 		}
 		// jika kita sudah melalukan submit
 		else{
-			if ($_FILES['users_image']['name'] == "")
+			if ($_FILES['image']['name'] == "")
 			{
 				//memanggil fungsi insertData pada model
 				$this->Users_m->updateData($id);

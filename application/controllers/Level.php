@@ -10,6 +10,9 @@ class Level extends CI_Controller {
 		$this->load->model('Level_m');
 		//load helper form
 		$this->load->helper('form');	
+		if($this->session->userdata("id") == null){
+			redirect("Home");
+		}
 	}
 
 	/* index (fungsi yang akan berjalan jika tidak ada fungsi yang dipangggil)

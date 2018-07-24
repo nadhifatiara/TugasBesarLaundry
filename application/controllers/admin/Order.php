@@ -7,6 +7,9 @@ class Order extends CI_Controller {
 	{
 		parent::__construct();
 		$this->load->model('Order_m');
+		if($this->session->userdata("id") == null){
+			redirect("Home");
+		}
 	}
 	public function finding()
 	{

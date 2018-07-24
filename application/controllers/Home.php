@@ -79,7 +79,13 @@ class Home extends CI_Controller {
 		$data['list_order'] = $this->Order_m->getDataCustomer();
 		$this->load->view('home/list_order',$data);
 	}
-	
+
+	public function kirim_barang($id){
+		$set['status'] = 6;
+		$this->db->where('id',$id);
+		$this->db->update('transaksi',$set);
+		redirect('Home/list_order','refresh');
+	}
 
 	public function about()
 	{

@@ -46,13 +46,20 @@
                 </a>
               </li>
               <li class="nav-item">
+                <a class="nav-link" href="<?php echo base_url('admin/Order/deliver') ?>">
+                <span data-feather="layers"></span>
+                Item Finding
+                </a>
+              </li>
+              <?php endif ?>
+
+              <?php if ($this->session->userdata('level') == '4' || $this->session->userdata('level') == '1'): ?>
+                <li class="nav-item">
                 <a class="nav-link" href="<?php echo base_url('admin/Order/list_transaction') ?>">
                   <span data-feather="layers"></span>
                   Order List Transaction
                 </a>
               </li>
-              <?php endif ?>
-              <?php if ($this->session->userdata('level') == '4' || $this->session->userdata('level') == '1'): ?>
                 <li class="nav-item">
                 <a class="nav-link" href="<?php echo base_url('admin/Order/list_wash') ?>">
                   <span data-feather="layers"></span>

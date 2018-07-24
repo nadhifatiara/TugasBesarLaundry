@@ -8,6 +8,9 @@ class Typelaundry_c extends CI_Controller {
 		parent::__construct();
 		$this->load->helper('form');
 		$this->load->model('Typelaundry_m');
+		if($this->session->userdata("id") == null){
+			redirect("Home");
+		}
 	}
 	public function index()
 	{
